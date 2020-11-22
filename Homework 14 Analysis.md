@@ -13,6 +13,21 @@ following parameters:
 - Mean Squared Error Loss Function
 - 10 Epochs Per Model
 
+## Findings
+The model fit with closing data performed far superior to the model fit with FNG values, with loss 
+values of 0.008 vs. 0.069, respectively.  When analyzing the graphs of predictions vs. actual closing
+prices it is obvious that the model fit with prior closing prices is much stronger.  This model
+predicted values fairly accurately to the actual prices, as can be seen on the graph.  Conversely, 
+the model fit with FNG values was not even close when predicting closing prices for just about the 
+entire period.  When compiling each model for analysis, window sizes ranging from 1 to 10 were utilized.
+A window size of 10 was found to fit the model best, when used in conjunction with the used batch size, 
+loss function, and optimizer function.  Numerous batch sizes, loss functions, and optimizer functions 
+were tested on each model in an effort to maximize performance.  In the end it was found that a batch
+size of 15, the Adam optimizer, and the Mean Squared Error loss function performed best.  A Sigmoid
+activation function was tested and going to be utilized in the output layer, but it was eventually 
+discovered that with modified batch sizes the Sigmoid function was not needed and would not positively
+impact performance of the model.  
+
 ### Data Preprocessing
 After reading in data for each model, a function to provide window data (rolling 10 days) was utilized.
 This allowed X and y variables to be defined for analysis in each model.  The X (feature) and y (target)
@@ -46,19 +61,5 @@ on the model fit with prior closing prices.  This was not the case with the mode
 as the predictions were significantly off in comparison to actual values.  
 
 
-## Findings
-The model fit with closing data performed far superior to the model fit with FNG values, with loss 
-values of 0.008 vs. 0.069, respectively.  When analyzing the graphs of predictions vs. actual closing
-prices it is obvious that the model fit with prior closing prices is much stronger.  This model
-predicted values fairly accurately to the actual prices, as can be seen on the graph.  Conversely, 
-the model fit with FNG values was not even close when predicting closing prices for just about the 
-entire period.  When compiling each model for analysis, window sizes ranging from 1 to 10 were utilized.
-A window size of 10 was found to fit the model best, when used in conjunction with the used batch size, 
-loss function, and optimizer function.  Numerous batch sizes, loss functions, and optimizer functions 
-were tested on each model in an effort to maximize performance.  In the end it was found that a batch
-size of 15, the Adam optimizer, and the Mean Squared Error loss function performed best.  A Sigmoid
-activation function was tested and going to be utilized in the output layer, but it was eventually 
-discovered that with modified batch sizes the Sigmoid function was not needed and would not positively
-impact performance of the model.  
 
 
